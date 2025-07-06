@@ -19,8 +19,8 @@ const auth = new google.auth.GoogleAuth({
 const sheets = google.sheets({ version: 'v4', auth });
 
 // Enable CORS for all origins or specific origin
-//app.use(cors({ origin: 'http://localhost:3000' })); // Allow requests from your frontend
-//app.use(bodyParser.json());
+app.use(cors({ origin: 'https://revalops-34baf.web.app/' })); // Allow requests from your frontend
+app.use(bodyParser.json());
 
 app.post('/api/storeRequest', async (req, res) => {
   const { email, message } = req.body;
