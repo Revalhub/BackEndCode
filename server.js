@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
-const SHEET_ID = '1uD4D_78zMFYA9c1GUa73L7t1RWYbLB1cFBD2_XgB2aw'; // Replace with your actual Sheet ID
+const SHEET_ID = process.env.SHEET_ID;
 const SERVICE_ACCOUNT_KEY_PATH = path.resolve(__dirname, '/etc/secrets/app.json'); // Path to Render's mounted secret file
 
 // Google Sheets Auth Setup
@@ -18,7 +18,7 @@ const auth = new google.auth.GoogleAuth({
 });
 const sheets = google.sheets({ version: 'v4', auth });
 
-// ✅ CORS Configuration
+// CORS Configuration
 const allowedOrigins = ['http://localhost:3000', 'https://revalops-34baf.web.app'];
 app.use(cors({
   origin: function (origin, callback) {
